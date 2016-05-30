@@ -13,6 +13,14 @@ library(mlbench)
 data(PimaIndiansDiabetes) 
 head(PimaIndiansDiabetes) 
 ```
+ pregnant glucose pressure triceps insulin mass pedigree age diabetes
+1        6     148       72      35       0 33.6    0.627  50      pos
+2        1      85       66      29       0 26.6    0.351  31      neg
+3        8     183       64       0       0 23.3    0.672  32      pos
+4        1      89       66      23      94 28.1    0.167  21      neg
+5        0     137       40      35     168 43.1    2.288  33      pos
+6        5     116       74       0       0 25.6    0.201  30      neg
+
 ```{r message=F,warning=F}
 PimaIndiansDiabetesC<- 
   PimaIndiansDiabetes[complete.cases(PimaIndiansDiabetes),] 
