@@ -48,21 +48,40 @@ c(sum(PimaIndiansDiabetesC$Test==F),sum(PimaIndiansDiabetesC$Test==T))
 ```
 我們可以得到訓練組案例數為`r sum(PimaIndiansDiabetesC$Test==F`，測試組案例數為`r sum(PimaIndiansDiabetesC$Test==T)`
 
-```{r message=F,warning=F}
+## 預測模型建立
+
+### 模型建立
+   
+由於變數多達8項，且多為連續變項，而輸出為二元類別變項，故選擇邏輯迴歸演算法建立模型，並使用雙向逐步選擇最佳參數組合。
+
+```{r warning=F,message=F}
 fit<-glm(diabetes~., PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==F,],family="binomial")
 library(MASS)
 finalFit<-stepAIC(fit,direction = "both",trace = F)
 summary(finalFit)$coefficients
 ```
-```{r message=F,warning=F}
+
+### 模型說明
+
+由上述參數可知，人體內的各項因素是否和糖尿病的產生有所關連，以邏輯迴歸建立模型預測糖尿病是否為陽性，經最佳化後，模型使用參數為`r rownames(summary(finalFit)$coefficient)[-1]`，共`r nrow(summary(finalFit)$coefficient)`個參數，各參數代表從某一個人體內的因素影響糖尿病陰陽性的程度
+ 
+## 預測模型驗證
+
+```{r warning=F,message=F,fig.height=4.5}
 PosPred<-predict(finalFit,newdata = PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,])
 PosAns<-ifelse(PosPred<0.5,"Pos","Neg")
 PosAns<-factor(PosAns,levels = c("Pos","Neg"))
 library(caret)
-```
-```{r message=F,warning=F}
 sensitivity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
 specificity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
 posPredValue(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
 negPredValue(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
+```
+
+人體內的各種因素對糖尿病陰陽性的影響，以邏輯迴歸模型預測是否造成陽性反應，可得：
+
+- 敏感度 `r sensitivity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$Class)*100`%
+- 特異性 `r specificity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$Class)*100`%
+- 陽性預測率 `r posPredValue(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$Class)*100`%
+- 陰性預測率 `r negPredValue(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$Class)*100`%
 ```
