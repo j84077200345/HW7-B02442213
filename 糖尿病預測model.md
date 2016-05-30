@@ -9,7 +9,7 @@ PimaIndiansDiabetesC<-
 c(nrow(PimaIndiansDiabetes),nrow(PimaIndiansDiabetesC))
 
 PimaIndiansDiabetesC$Test<-F 
-#?璈??1/3?Test set
+
 PimaIndiansDiabetesC[
   sample(1:nrow(PimaIndiansDiabetesC),nrow(PimaIndiansDiabetesC)/3),
   ]$Test<-T 
