@@ -9,7 +9,7 @@ PimaIndiansDiabetesC<-
 c(nrow(PimaIndiansDiabetes),nrow(PimaIndiansDiabetesC))
 
 PimaIndiansDiabetesC$Test<-F 
-#ÀH¾÷¨ú1/3·íTest set
+#éš¨æ©Ÿå–1/3ç•¶Test set
 PimaIndiansDiabetesC[
   sample(1:nrow(PimaIndiansDiabetesC),nrow(PimaIndiansDiabetesC)/3),
   ]$Test<-T 
