@@ -11,7 +11,7 @@ install.packages("mlbench")
 install.packages("caret")
 library(mlbench)
 data(PimaIndiansDiabetes) 
-head(PimaIndiansDiabetes) 
+str(PimaIndiansDiabetes) 
 ```
 ```{r message=F,warning=F}
  'data.frame':	768 obs. of  9 variables:
