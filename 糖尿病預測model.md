@@ -14,18 +14,25 @@ data(PimaIndiansDiabetes)
 head(PimaIndiansDiabetes) 
 ```
 ```{r message=F,warning=F}
- pregnant glucose pressure triceps insulin mass pedigree age diabetes
-1        6     148       72      35       0 33.6    0.627  50      pos
-2        1      85       66      29       0 26.6    0.351  31      neg
-3        8     183       64       0       0 23.3    0.672  32      pos
-4        1      89       66      23      94 28.1    0.167  21      neg
-5        0     137       40      35     168 43.1    2.288  33      pos
-6        5     116       74       0       0 25.6    0.201  30      neg
+ 'data.frame':	768 obs. of  9 variables:
+ $ pregnant: num  6 1 8 1 0 5 3 10 2 8 ...
+ $ glucose : num  148 85 183 89 137 116 78 115 197 125 ...
+ $ pressure: num  72 66 64 66 40 74 50 0 70 96 ...
+ $ triceps : num  35 29 0 23 35 0 32 0 45 0 ...
+ $ insulin : num  0 0 0 94 168 0 88 0 543 0 ...
+ $ mass    : num  33.6 26.6 23.3 28.1 43.1 25.6 31 35.3 30.5 0 ...
+ $ pedigree: num  0.627 0.351 0.672 0.167 2.288 ...
+ $ age     : num  50 31 32 21 33 30 26 29 53 54 ...
+ $ diabetes: Factor w/ 2 levels "neg","pos": 2 1 2 1 2 1 2 1 2 2 ...
 ```
-```{r message=F,warning=F}
-PimaIndiansDiabetesC<- 
-  PimaIndiansDiabetes[complete.cases(PimaIndiansDiabetes),] 
+###選資料完整的row
+```{r}
+PimaIndiansDiabetesC<-
+  PimaIndiansDiabetes[complete.cases(PimaIndiansDiabetes),]
 c(nrow(PimaIndiansDiabetes),nrow(PimaIndiansDiabetesC))
+```
+```{r}
+[1] 768 768
 ```
 ```{r message=F,warning=F}
 PimaIndiansDiabetesC$Test<-F 
