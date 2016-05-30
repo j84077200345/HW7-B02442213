@@ -39,13 +39,12 @@ c(nrow(PimaIndiansDiabetes),nrow(PimaIndiansDiabetesC))
 隨機將1/3的資料分到訓練組（Test==F），剩下1/3為測試組（Test==T）
 
 ```{r}
-PimaIndiansDiabetesC[
-  sample(1:nrow(PimaIndiansDiabetesC),nrow(PimaIndiansDiabetesC)/3),
-  ]$Test<-T 
+PimaIndiansDiabetesC$Test<-F 
+PimaIndiansDiabetesC[sample(1:nrow(PimaIndiansDiabetesC),nrow(PimaIndiansDiabetesC)/3),]$Test<-T 
 c(sum(PimaIndiansDiabetesC$Test==F),sum(PimaIndiansDiabetesC$Test==T)) 
 ```
-
-我們可以得到訓練組案例數為`r sum(PimaIndiansDiabetesC$Test==F`，測試組案例數為`r sum(PimaIndiansDiabetesC$Test==T)`
+[1] 512 256
+我們可以得到訓練組案例數為`r sum(PimaIndiansDiabetesC$Test==F`(512)，測試組案例數為`r sum(PimaIndiansDiabetesC$Test==T)`(256)
 
 ```{r message=F,warning=F}
 fit<-glm(diabetes~., PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==F,],family="binomial")
