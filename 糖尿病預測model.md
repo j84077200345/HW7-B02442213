@@ -1,13 +1,15 @@
+```{r message=F,warning=F}
 install.packages("mlbench")
 install.packages("caret")
 library(mlbench)
 data(PimaIndiansDiabetes) 
 head(PimaIndiansDiabetes) 
-
+```
+```{r message=F,warning=F}
 PimaIndiansDiabetesC<- 
   PimaIndiansDiabetes[complete.cases(PimaIndiansDiabetes),] 
 c(nrow(PimaIndiansDiabetes),nrow(PimaIndiansDiabetesC))
-
+```
 PimaIndiansDiabetesC$Test<-F 
 
 PimaIndiansDiabetesC[
