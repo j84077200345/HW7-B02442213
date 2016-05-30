@@ -90,16 +90,25 @@ sensitivity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
 specificity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
 ```
 ```{r warning=F,message=F}
+## [1] 0.962963
+```
+```{r warning=F,message=F}
 posPredValue(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
+```
+```{r warning=F,message=F}
+## [1] 0.9756098
 ```
 ```{r warning=F,message=F}
 negPredValue(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
 ```
 ```{r warning=F,message=F}
+## [1] 0.9285714
+```
+```{r warning=F,message=F}
 人體內的各種因素對糖尿病陰陽性的影響，以邏輯迴歸模型預測是否造成陽性反應，可得：
 
-- 敏感度 `r sensitivity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$Class)*100`%= 
-- 特異性 `r specificity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$Class)*100`%=
-- 陽性預測率 `r posPredValue(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$Class)*100`%=
-- 陰性預測率 `r negPredValue(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$Class)*100`%=
+- 敏感度 `r sensitivity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$Class)*100`%= 95.2%
+- 特異性 `r specificity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$Class)*100`%= 96.2%
+- 陽性預測率 `r posPredValue(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$Class)*100`%= 97.5%
+- 陰性預測率 `r negPredValue(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$Class)*100`%= 92.8%
 ```
