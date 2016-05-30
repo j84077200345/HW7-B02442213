@@ -60,7 +60,16 @@ library(MASS)
 finalFit<-stepAIC(fit,direction = "both",trace = F)
 summary(finalFit)$coefficients
 ```
-
+```{r warning=F,message=F}
+ Estimate   Std. Error    z value     Pr(>|z|)
+(Intercept) -8.790367220 0.8689584635 -10.115981 4.692923e-24
+pregnant     0.111238301 0.0374095919   2.973524 2.944018e-03
+glucose      0.037838437 0.0046249467   8.181378 2.806163e-16
+insulin     -0.002504772 0.0009200346  -2.722476 6.479466e-03
+mass         0.071177186 0.0163958998   4.341158 1.417340e-05
+pedigree     0.768527895 0.3443952802   2.231529 2.564614e-02
+age          0.016656436 0.0110652585   1.505291 1.322492e-01
+```
 ### 模型說明
 
 由上述參數可知，人體內的各項因素是否和糖尿病的產生有所關連，以邏輯迴歸建立模型預測糖尿病是否為陽性，經最佳化後，模型使用參數為`r rownames(summary(finalFit)$coefficient)[-1]`，共`r nrow(summary(finalFit)$coefficient)`個參數，各參數代表從某一個人體內的因素影響糖尿病陰陽性的程度
