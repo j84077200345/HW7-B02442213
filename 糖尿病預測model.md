@@ -24,6 +24,7 @@ PosPred<-predict(finalFit,newdata = PimaIndiansDiabetesC[PimaIndiansDiabetesC$Te
 PosAns<-ifelse(PosPred<0.5,"Pos","Neg")
 PosAns<-factor(PosAns,levels = c("Pos","Neg"))
 library(caret)
+
 sensitivity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
 specificity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
 posPredValue(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
