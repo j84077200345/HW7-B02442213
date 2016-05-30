@@ -1,3 +1,9 @@
+## 資料前處理
+
+### 資料讀取
+
+記載受測者經檢查後糖尿病的陰陽性反應椰果，一共有8個參數，代表各種可能是導致其獲得糖尿病的因素。另外，分類結果為二元分類，包括陽性(pos) 與陰性 (neg) 。
+
 ```{r message=F,warning=F}
 install.packages("mlbench")
 install.packages("caret")
