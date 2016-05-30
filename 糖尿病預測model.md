@@ -82,6 +82,9 @@ PosAns<-ifelse(PosPred<0.5,"Pos","Neg")
 PosAns<-factor(PosAns,levels = c("Pos","Neg"))
 library(caret)
 sensitivity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
+```{r warning=F,message=F}
+## [1] 0.952381
+```
 specificity(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
 posPredValue(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
 negPredValue(PosAns,PimaIndiansDiabetesC[PimaIndiansDiabetesC$Test==T,]$diabetes)
